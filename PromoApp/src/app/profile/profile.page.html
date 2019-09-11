@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      My Profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <app-loading *ngIf="busy"></app-loading>
+
+<div class="center" *ngIf="!busy">
+<ion-grid>
+  <div id="profile-info" *ngIf="username">
+		<ion-grid>
+			<ion-row>
+				<ion-col size="4" class="user-image">
+					<ion-img src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/200x200/center/"></ion-img>
+				</ion-col>
+				<ion-col size="8">
+					<p>{{ username }}</p>
+					<ion-button shape="round" color="primary" routerLink="/tabs/edit-profile">Edit Profile</ion-button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</div>
+    <ion-row>
+      <ion-col class="mid">
+        <input type="file" *ngIf="!imageURL" (change)="fileChanged($event)" class="filebtn" #fileButton/>
+
+        <ion-button shape="round" color="primary" (click)="uploadFile()" *ngIf="!imageURL" fill="outline">Upload File</ion-button>
+
+        <ion-card *ngIf="imageURL">
+          <img src="https://ucarecdn.com/{{ imageURL }}/"/>
+          <ion-card-content>
+            <ion-textarea placeholder="Enter some description" [(ngModel)]="desc"></ion-textarea>
+            <ion-button shape="round" color="primary" (click)="createPost()">POST</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+</ion-grid>
+</div>
+</ion-content>
