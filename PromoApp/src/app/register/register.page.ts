@@ -15,6 +15,7 @@ import {UserService} from '../user.service';
 })
 export class RegisterPage implements OnInit {
   username: string = ""
+  email: string = ""
   password: string = ""
   cpassword: string = ""
 
@@ -29,13 +30,13 @@ export class RegisterPage implements OnInit {
   }
 
   async signup(){
-    const {username,password,cpassword} = this
+    const {username,email,password,cpassword} = this
     if (password != cpassword){
       this.showAlert("Error","Passwords dont match")
       return console.error("Password doesnt match")
     }
     try{
-      const res = await this.afAuth.auth.createUserWithEmailAndPassword(username + "@email.com",password)
+      const res = await this.afAuth.auth.createUserWithEmailAndPassword(email,password)
       if (res){
         this.showAlert("Success","Welcome Aboard!")
 
@@ -45,7 +46,8 @@ export class RegisterPage implements OnInit {
 
         this.user.setUser({
           username,
-          uid: res.user.uid
+          uid: res.user.uid,
+          vault: []
         })
 
 

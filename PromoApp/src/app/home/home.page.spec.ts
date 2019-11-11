@@ -5,7 +5,7 @@ import { HomePage } from './home.page';
 
 describe('HomePage', () => {
   let component: HomePage;
-  let fixture: ComponentFixture<Tab1Page>;
+  let fixture: ComponentFixture<HomePage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

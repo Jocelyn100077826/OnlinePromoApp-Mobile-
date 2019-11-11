@@ -5,7 +5,7 @@ import { ProfilePage } from './profile.page';
 
 describe('ProfilePage', () => {
   let component: ProfilePage;
-  let fixture: ComponentFixture<Tab2Page>;
+  let fixture: ComponentFixture<ProfilePage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

@@ -5,6 +5,9 @@ import {UserService} from '../user.service';
 import {firestore} from 'firebase/app'
 import { Observable } from 'rxjs';
 import {Router} from '@angular/router'
+import {Promo, PromotionsService} from './../promotions.service';
+
+export interface Item { title: string; image: string; }
 
 @Component({
   selector: 'app-home',
@@ -12,21 +15,25 @@ import {Router} from '@angular/router'
   styleUrls: ['home.page.scss']
 })
 export class HomePage implements OnInit{
+  promos: Promo[];
 
-  userPosts
-
-  constructor(private afs: AngularFirestore, private user: UserService, private router: Router) {
-    const posts = afs.doc(`users/${user.getUID()}`)
-
-    this.userPosts = posts.valueChanges()
-    // console.log(user.getUID())
-    }
-
-    goTo(postID: string){
-      this.router.navigate(['/tabs/post/'+ postID])
-    }
+  constructor(private afs: AngularFirestore, private promoService: PromotionsService, private router: Router) {
+  
+  }
 
   ngOnInit() {
+    this.promoService.getPromos().subscribe(res => {
+      this.promos = res;
+    })
 
+    var slides = document.querySelector('ion-slides');
+
+    // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
+    // slides.options = {
+    //   initialSlide: 1,
+    //   speed: 400
+    // }
   }
+
+  
 }

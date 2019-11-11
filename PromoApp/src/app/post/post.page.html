@@ -1,20 +1,25 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Post</ion-title>
-  </ion-toolbar>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-  <app-loading *ngIf="!post"></app-loading>
+  <app-loading *ngIf="!promo"></app-loading>
 
-  <ion-card *ngIf="post as postData">
-    <ion-img src="https://ucarecdn.com/{{ postID }}/"></ion-img>
+  <ion-card >
+    <ion-img [src]="promo.image"></ion-img>
     <ion-card-content>
-      <p>{{post.desc}}</p>
+      <p>{{promo.title}}</p>
     </ion-card-content>
-    <ion-item (click)="toggleHeart()">
-      <ion-icon [name]="heartType"></ion-icon>
-    </ion-item>
   </ion-card>
+
+  <ion-button expand="full" (click)="shareTwitter()">Share with Twitter</ion-button>
+  <ion-button expand="full" (click)="shareFacebook()">Share with Facebook</ion-button>
+  <ion-button expand="full" (click)="shareWhatsapp()">Share with Whatsapp</ion-button>
+
 </ion-content>

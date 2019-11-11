@@ -5,6 +5,7 @@ import {UserService} from '../user.service';
 import {firestore} from 'firebase/app'
 import {AlertController} from '@ionic/angular'
 import {Router} from '@angular/router'
+import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links/ngx';
 
 @Component({
   selector: 'app-profile',
@@ -22,17 +23,20 @@ export class ProfilePage implements OnInit{
   profilePic: string
 
   username: string
+  uid: string
 
-  @ViewChild('fileButton') fileButton
+  @ViewChild('fileButton', {static: false}) fileButton
 
   constructor(
     public http: Http,
     public afstore: AngularFirestore,
     public user: UserService,
     public alertController: AlertController,
-    public router: Router) {
+    public router: Router,
+    private firebaseDynamicLinks: FirebaseDynamicLinks) {
 
     this.mainuser = afstore.doc(`users/${user.getUID()}`)
+    this.uid = user.getUID()
 
     this.sub = this.mainuser.valueChanges().subscribe(event => {
       this.username = event.username
@@ -50,37 +54,38 @@ export class ProfilePage implements OnInit{
   }
 
   ngOnInit(){
+    this.checkmine()
   }
 
-  async createPost(){
-    this.busy = true
-    const image = this.imageURL
-    const desc = this.desc
+  checkmine(){
+    this.firebaseDynamicLinks.onDynamicLink().subscribe((res: any) => window.alert(res.deepLink), (error:any) => window.alert(error));
+    // window.alert("TEST");
 
-    this.afstore.doc(`users/${this.user.getUID()}`).update({
-      posts: firestore.FieldValue.arrayUnion(image) // unique id
-    })
-
-    this.afstore.doc(`posts/${image}`).set({
-      desc,
-      author: this.user.getUsername(),
-      likes:[]
-    })
-
-    this.busy = false
-    this.imageURL = ""
-    this.desc = ""
-
-    const alert = await this.alertController.create({
-      header: 'Done',
-      message: 'Your post has been submitted',
-      buttons: ['Cool']
-    })
-
-    await alert.present()
-
-    this.router.navigate(['/tabs/home'])
   }
+
+  // async createPost(){
+  //   this.busy = true
+  //   const image = this.imageURL
+  //   const desc = this.desc
+
+  //   this.afstore.doc(`users/${this.user.getUID()}`).update({
+  //     posts: firestore.FieldValue.arrayUnion(image) // unique id
+  //   })
+
+  //   this.busy = false
+  //   this.imageURL = ""
+  //   this.desc = ""
+
+  //   const alert = await this.alertController.create({
+  //     header: 'Done',
+  //     message: 'Your post has been submitted',
+  //     buttons: ['Cool']
+  //   })
+
+  //   await alert.present()
+
+  //   this.router.navigate(['/tabs/home'])
+  // }
 
 
   uploadFile(){

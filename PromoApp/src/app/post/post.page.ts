@@ -3,6 +3,8 @@ import {ActivatedRoute} from '@angular/router'
 import {AngularFirestore} from '@angular/fire/firestore'
 import {UserService} from '../user.service'
 import { firestore} from 'firebase/app'
+import { PromotionsService, Promo } from '../promotions.service';
+import { SocialSharing} from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-post',
@@ -11,40 +13,50 @@ import { firestore} from 'firebase/app'
 })
 export class PostPage implements OnInit {
 
-  postID: string
-  post
-  postReference
-  heartType: string = "heart-empty"
-  sub
+  promo: Promo = {
+    title: '123',
+    image: './../assets/default.jpg',
+    promoter: '123',
+    keys: []
+  }
+
+  promoId = null;
 
   constructor(private route: ActivatedRoute,
               private afs: AngularFirestore,
-              private user: UserService) {
+              private promoService: PromotionsService,
+              private socialSharing: SocialSharing) {
   }
 
-  toggleHeart(){
-    if(this.heartType == 'heart-empty'){
-      this.postReference.update({
-        likes:firestore.FieldValue.arrayUnion(this.user.getUID())
-      })
-    }else{
-      this.postReference.update({
-        likes:firestore.FieldValue.arrayRemove(this.user.getUID())
-      })
+  shareTwitter(){
+    this.socialSharing.shareViaTwitter("Hi")
+  }
+
+  shareFacebook(){
+    this.socialSharing.shareViaFacebook("PromoApp:https://onlinepromoapp.firebaseapp.com/sharing.html?id=6eXSm1eYLDtoKTwunuqj&fbclid=IwAR3fJ_zaoXtEEmLWzhNUDT9Oi7bzYoYpP114vjGs73mEq09C0eyxlpGYHiA");
+
+  }
+
+  shareWhatsapp(){
+    this.socialSharing.shareViaWhatsApp("Hi",null)
+
+  }
+
+
+  ngOnInit() {
+    this.promoId = this.route.snapshot.params['id'];
+    if(this.promoId){
+      console.log(this.promoId);
+      this.loadPromo();
+
     }
   }
 
-  ngOnInit() {
-      this.postID = this.route.snapshot.paramMap.get('id')
-      this.postReference = this.afs.doc(`posts/${this.postID}`)
-      this.sub = this.postReference.valueChanges().subscribe(val => {
-        this.post = val
-        this.heartType = val.likes.includes(this.user.getUID())? 'heart' : 'heart-empty'
-      })
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe()
+  loadPromo() {
+    this.promoService.getPromo(this.promoId).subscribe(res => {
+      this.promo = res;
+      console.log(this.promo.image);
+    })
   }
 
 }

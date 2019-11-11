@@ -1,23 +1,32 @@
 <ion-header>
-  <ion-toolbar>
+  <!-- <ion-toolbar>
     <ion-title>Register</ion-title>
-  </ion-toolbar>
+  </ion-toolbar> -->
 </ion-header>
-<ion-content class="myview" padding class="letsstart">
-  <ion-list>
+
+<ion-content  class="background-image">
   <ion-item>
     <ion-label position="floating">Username</ion-label>
     <ion-input type="text" [(ngModel)]="username"></ion-input>
   </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="text" [(ngModel)]="email"></ion-input>
+  </ion-item>
+
   <ion-item>
     <ion-label position="floating">Password</ion-label>
     <ion-input type="password" [(ngModel)]="password"></ion-input>
   </ion-item>
+
   <ion-item>
     <ion-label position="floating">Confirm Password</ion-label>
     <ion-input type="password" [(ngModel)]="cpassword"></ion-input>
   </ion-item>
-  </ion-list>
-  <ion-button expand="block" type="submit" class="ion-no-margin" (click)="signup()">SignUp</ion-button>
-  <ion-text class="ion-padding-top" color="primary" (click)="navtologin()">Login</ion-text>
+
+  
+  <ion-button color="light" expand="block" style="padding: 0px 20px; margin-top: 10px;" fill="outline">Register</ion-button>
+  <p style="color: white;">Already have an account? <a href="/login">Sign In</a></p>
+
 </ion-content>

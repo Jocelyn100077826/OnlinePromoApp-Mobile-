@@ -1,20 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Home</ion-title>
-  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+    <ion-slides pager="true" *ngIf="promos" style="margin-top: 19px;">
 
-  <app-loading *ngIf="!userPosts"></app-loading>
+        <ion-slide>
+          <ion-img src="../../assets/imgs/1carol.png"></ion-img>
+        </ion-slide>
+    
+        <ion-slide>
+          <ion-img src="../../assets/imgs/2carol.png"></ion-img>
+        </ion-slide>
+    
+        <ion-slide>
+          <ion-img src="../../assets/imgs/3carol.png"></ion-img>
+        </ion-slide>
+      </ion-slides>
 
-  <div id="images" *ngIf="(userPosts | async)?.posts as posts">
-    <div class="image" *ngFor="let post of posts">
-      <ion-card (click)="goTo(post)">
-        <ion-img src="https://ucarecdn.com/{{ post }}/-/scale_crop/500x300/center/"></ion-img>
-      <ion-card-content>
-        <p>{{ post }}</p>
-      </ion-card-content>
+    <ion-searchbar style="border-radius: 50%;">
+  </ion-searchbar>
+
+
+  
+  <app-loading *ngIf="!promos"></app-loading>
+
+  <div id="images" padding>
+    <div class="image" *ngFor="let promo of promos">
+      <ion-card button [routerLink]="['/tabs/post', promo.id]" >
+        <ion-img [src]="promo.image"></ion-img>
+        <ion-card-content>
+          <p>{{ promo.title }}</p>
+          <!-- <p>{{ promo.image }}</p> -->
+        </ion-card-content>
       </ion-card>
     </div>
   </div>

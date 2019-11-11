@@ -15,10 +15,16 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import {AngularFirestoreModule} from '@angular/fire/firestore'
 import { AngularFirestore } from '@angular/fire/firestore'
 
+import {BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner/ngx';
+import {NgxQRCodeModule} from 'ngx-qrcode2'
+
 import  {UserService } from './user.service';
 import {AuthService} from './auth.service'
 import { HttpModule } from '@angular/http'
 import {SharedModule} from './share.module'
+
+import {SocialSharing} from '@ionic-native/social-sharing/ngx'
+import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links/ngx'
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,14 +37,18 @@ import {SharedModule} from './share.module'
     AngularFireAuthModule,
     AngularFirestoreModule,
     HttpModule,
-    SharedModule
+    SharedModule,
+    NgxQRCodeModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     UserService,
-    AuthService
+    AuthService,
+    BarcodeScanner,
+    SocialSharing,
+    FirebaseDynamicLinks
   ],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,25 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Three
+      Vault
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <div id="images">
+    <div class="image" *ngFor="let v of fullPromo">
+      <ion-card button [routerLink]="['/tabs/code', v.code]" >
+        <ion-img [src]="v.image"></ion-img>
+        <ion-card-content>
+          <p>{{ v.title }}</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    
+    <!-- <ion-button onclick="showProm()">CHECK</ion-button> -->
+  </div>
+
+
+
+</ion-content>

@@ -1,18 +1,19 @@
+  
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonTabs } from '@ionic/angular';
 
 @Component({
   selector: 'app-tabs',
-  templateUrl: 'tabs.page.html',
-  styleUrls: ['tabs.page.scss']
+  templateUrl: './tabs.page.html',
+  styleUrls: ['./tabs.page.scss'],
 })
-export class TabsPage implements OnInit{
+export class TabsPage implements OnInit {
 
-  @ViewChild('tabs') tabs: IonTabs
-  constructor() {}
+	@ViewChild('tabs', {static: true}) tabs: IonTabs
 
-  ngOnInit(){
-    this.tabs.select('profile')
-  }
+	constructor() { }
 
+	ngOnInit() {
+		this.tabs.select('home')
+	}
 }

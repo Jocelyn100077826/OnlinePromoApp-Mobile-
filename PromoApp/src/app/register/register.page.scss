@@ -1,0 +1,14 @@
+
+
+.background-image{
+    --background: url(../../assets/imgs/bgtint.png) 0 0/100% 100% no-repeat;
+    
+}
+
+ion-item {
+    margin: 0px 20px;
+    --background: rgba(0,0,0,0);
+    --color: white;
+    --highlight-color-focused: white;
+    --ion-color-primary:white;
+}
