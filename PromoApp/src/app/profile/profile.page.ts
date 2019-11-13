@@ -25,8 +25,6 @@ export class ProfilePage implements OnInit{
   username: string
   uid: string
 
-  @ViewChild('fileButton', {static: false}) fileButton
-
   constructor(
     public http: Http,
     public afstore: AngularFirestore,
@@ -88,9 +86,9 @@ export class ProfilePage implements OnInit{
   // }
 
 
-  uploadFile(){
-    this.fileButton.nativeElement.click()
-  }
+  // uploadFile(){
+  //   this.fileButton.nativeElement.click()
+  // }
 
   fileChanged (event){
 

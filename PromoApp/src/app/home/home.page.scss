@@ -8,7 +8,69 @@
   width: 100%;
 
 }
+
+.bg{
+  --background: #D3D3D3;
+}
+
 ion-searchbar {
   border-radius: 30px !important;
   border: 1px solid transparent;
+}
+
+ion-toolbar {
+  --background:  transparent !important;
+  --ion-color-base: transparent !important; 
+}
+
+.homeText {
+  color: #000;
+  text-align: center;
+  font-weight: bold;
+}
+
+ion-card {
+  --background: #fff;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  width: 100% !important;
+  margin: 0 !important;
+  height: 100% !important;
+}
+
+ion-card-title{
+  font-weight: bold;
+}
+
+.card{
+  text-align: center;
+}
+
+.promodate{
+  background: rgb(45, 186, 241);
+  color: #fff;
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+
+.greetings{
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.5)
+  ),url(../../assets/imgs/shopping.png);
+  background-size: cover !important;
+  position: relative;
+  height: 200px;
+  border-color: transparent !important;
+  background-repeat: no-repeat !important;
+}
+
+.module{
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  color: #fff;
+  text-align: left;
+  font-size: 30px;
+  font-family: sans-serif;
 }

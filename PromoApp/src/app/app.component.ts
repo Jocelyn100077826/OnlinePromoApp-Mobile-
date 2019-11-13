@@ -26,8 +26,8 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.firebaseDynamicLinks.onDynamicLink()
-      .subscribe((res: any) => window.alert(res), (error:any) => window.alert(error));
+      // this.firebaseDynamicLinks.onDynamicLink()
+      // .subscribe((res: any) => window.alert(res), (error:any) => window.alert(error));
     });
     
   }

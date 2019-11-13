@@ -9,7 +9,7 @@ import { IonTabs } from '@ionic/angular';
 })
 export class TabsPage implements OnInit {
 
-	@ViewChild('tabs', {static: true}) tabs: IonTabs
+	@ViewChild('tabs') tabs: IonTabs
 
 	constructor() { }
 
