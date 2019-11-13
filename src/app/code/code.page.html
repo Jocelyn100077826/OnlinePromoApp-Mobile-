@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Code</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="promoId">
+      <ngx-qrcode [(qrc-value)]="promoId"></ngx-qrcode>
+</ion-card>
+</ion-content>
