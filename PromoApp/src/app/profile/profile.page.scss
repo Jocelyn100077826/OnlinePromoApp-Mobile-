@@ -1,0 +1,35 @@
+.profile{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+  margin: 0 0;
+}
+
+.profile p{
+  color: gray;
+  font-size: 12px;
+}
+
+.profile ion-button{
+  padding-top: 5px;
+  font-size: 10px;
+}
+
+.profile ion-img{
+  padding: 15px 5px;
+  border: 1px solid black;
+}
+
+.filebtn {
+  opacity: 0;
+  position:absolute;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mid ion-button{
+  margin-top: 40%;
+  width: 100%;
+}

@@ -1,0 +1,52 @@
+<ion-header>
+</ion-header>
+
+<ion-content fullscreen="true" class="bg">
+  <!-- <div class="greetings">
+      <div class="module">
+        <span><b>Welcome</b></span>
+      </div>
+    </div> -->
+    <div class="top">
+    <ion-slides [options]="imgSlideOpt" class="slides">
+        <ion-slide *ngFor="let caro of carousel">
+          <img id="caroimg" [src]="caro.image"/>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    
+    <ion-searchbar placeholder="Search promotions" (ionInput)="filter($event)" class="search">
+    </ion-searchbar>
+
+  <app-loading *ngIf="!promolist"></app-loading>
+
+  <div class="homeText">
+    <span>Available Promotions</span>
+  </div>
+
+  <ion-grid>
+    <ion-col *ngFor="let promo of promolist" class="card">
+          <ion-card button [routerLink]="['/tabs/post', promo.id]">
+            <img [src]="promo.image"/>
+            <ion-card-header>
+              <ion-card-title>{{promo.title}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="botdes">
+              <p>{{ promo.desc }}</p>
+              
+              <p class="promodate">{{promo.startdate}} - {{promo.enddate}}</p>
+            </ion-card-content>
+          </ion-card>
+    </ion-col>
+  </ion-grid>
+  
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+     </ion-infinite-scroll>
+     
+</ion-content>
+
+

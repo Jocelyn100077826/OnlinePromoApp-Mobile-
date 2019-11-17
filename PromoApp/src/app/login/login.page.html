@@ -1,0 +1,26 @@
+<ion-header>
+  <!-- <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content class="background-image">
+
+  <ion-item style="margin-top: 50%;">
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="email" [(ngModel)]="username"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input [attr.type]="isPassword?'password':'text'" [(ngModel)]="password" id="pw"></ion-input>
+    <ion-icon style="color: white; padding-top: 10px;" name="eye" slot="end" (click)="showpw()"></ion-icon>
+  </ion-item>
+
+  <p id="error" style="color: yellow; font-size: 12px; text-align: center;"></p>
+
+  <ion-button color="light" expand="block"  type="submit" style="padding: 0px 20px; margin-top: 10px;" fill="outline" (click)="login()">Login</ion-button>
+  <p style="color: white; font-size: 12px; text-align: center;">Don't have an account? <a href="/register">Sign Up</a></p>
+  
+  <!-- <ion-button (click)="checkmine()">Check</ion-button> -->
+</ion-content>
