@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="end">
+          <ion-icon name="close" class="exitbtn" (click)="closeModal()"></ion-icon>
+      </ion-buttons>
+    <ion-title>Edit About</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="body">
+        <ion-row>
+          <ion-col class="12">
+            <div class="editAbt">
+              <span>Add About</span>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="12">
+            <div class="inputAbt">
+              <span><input type="text" id="addAbt" [(ngModel)]="about"></span>
+              <button type="submit" class="editbtn ion-activatable" (click)="editAbt()"><ion-ripple-effect></ion-ripple-effect>Add</button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+</ion-content>

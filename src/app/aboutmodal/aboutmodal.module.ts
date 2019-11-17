@@ -4,13 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-import { NgxQRCodeModule } from 'ngx-qrcode2';
-import { CodePage } from './code.page';
+
+import { AboutmodalPage } from './aboutmodal.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: CodePage
+    component: AboutmodalPage
   }
 ];
 
@@ -19,9 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    NgxQRCodeModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [CodePage]
+  declarations: [AboutmodalPage]
 })
-export class CodePageModule {}
+export class AboutmodalPageModule {}

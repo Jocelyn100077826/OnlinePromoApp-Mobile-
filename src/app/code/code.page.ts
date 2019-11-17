@@ -5,6 +5,7 @@ import {UserService} from '../user.service'
 import { firestore} from 'firebase/app'
 import { PromotionsService, Promo } from '../promotions.service';
 import { SocialSharing} from '@ionic-native/social-sharing/ngx';
+import {NgxQRCodeModule} from 'ngx-qrcode2';
 
 @Component({
   selector: 'app-code',

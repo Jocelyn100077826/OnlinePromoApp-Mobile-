@@ -9,7 +9,7 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 
 interface user {
   username: string,
-  uid: string,
+	uid: string,
   vault: Array<string>
 }
 
@@ -18,7 +18,9 @@ export class UserService {
   
   private user: user
 
- constructor(private afAuth: AngularFireAuth,public db: AngularFirestore){
+ constructor(
+   private afAuth: AngularFireAuth,
+   public db: AngularFirestore){
   
   // this.userCollection = db.collection<user>('user');
 
@@ -32,6 +34,7 @@ export class UserService {
     //   })
     // );
  }
+
  getUserInfo(id): Observable<any>{
   return this.db.collection('users').doc(id).valueChanges();
 }
@@ -50,34 +53,34 @@ export class UserService {
    if (user){
 
      this.setUser({
-       username: user.email,
+       username: user.email.split('@')[0],
        uid: user.uid,
        vault: []
      })
      return true
-   }else{
-     return false
-   }
- }
+		}
+		return false
+	}
 
- reAuth(username: string, password: string){
-   return this.afAuth.auth.currentUser.reauthenticateWithCredential(auth.EmailAuthProvider.credential(username ,password))
- }
- updatePassword(npassword: string){
-   return this.afAuth.auth.currentUser.updatePassword(npassword)
- }
+ reAuth(username: string, password: string) {
+  return this.afAuth.auth.currentUser.reauthenticateWithCredential(auth.EmailAuthProvider.credential(username, password))
+}
 
- updateEmail(newemail: string){
-   return this.afAuth.auth.currentUser.updateEmail(newemail)
- }
+updatePassword(newpassword: string) {
+  return this.afAuth.auth.currentUser.updatePassword(newpassword)
+}
 
- getUsername(): string{
-   return this.user.username
- }
+updateEmail(newemail: string) {
+  return this.afAuth.auth.currentUser.updateEmail(newemail)
+}
 
- getUID(): string{
-   return this.user.uid
- }
+getUsername(): string {
+  return this.user.username
+}
+
+getUID(): string {
+		return this.user.uid
+	}
 
   
 }

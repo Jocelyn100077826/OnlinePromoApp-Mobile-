@@ -1,0 +1,36 @@
+.exitbtn {
+    font-size: 35px;
+}
+
+.inputAbt {
+    padding-top: 10px;
+}
+
+#addAbt {
+    border: none;
+    border-bottom: 1px solid #ebe8e8;
+    margin-left: 10px;
+}
+
+#addAbt:focus {
+    border-bottom: 1px solid #fc6435;
+}
+
+input[type="text"], textarea, select { 
+    outline: none;
+}
+
+.editbtn {
+    background-color: #fc6435;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 8px 2px;
+    cursor: pointer;
+    width: 100%;
+}
