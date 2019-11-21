@@ -5,7 +5,9 @@ import {UserService} from '../user.service'
 import { firestore} from 'firebase/app'
 import { PromotionsService, Promo } from '../promotions.service';
 import { SocialSharing} from '@ionic-native/social-sharing/ngx';
+
 import {NgxQRCodeModule} from 'ngx-qrcode2';
+import {BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-code',
@@ -21,7 +23,7 @@ export class CodePage implements OnInit {
   constructor(private route: ActivatedRoute,
     private afs: AngularFirestore,
     private promoService: PromotionsService,
-    ) { }
+    public scanner:BarcodeScanner) { }
 
   ngOnInit() {
     this.promoId = this.route.snapshot.params['id'];

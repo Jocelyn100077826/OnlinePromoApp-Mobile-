@@ -15,6 +15,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import {AngularFirestoreModule} from '@angular/fire/firestore'
 import { AngularFirestore } from '@angular/fire/firestore'
 
+import {BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner/ngx';
 import {NgxQRCodeModule} from 'ngx-qrcode2'
 
 import  {UserService } from './user.service';
@@ -23,16 +24,7 @@ import { HttpModule } from '@angular/http'
 import {SharedModule} from './share.module'
 
 import {SocialSharing} from '@ionic-native/social-sharing/ngx'
-import { FirebaseService } from '../app/service/firebase.service';
-import { Crop } from '@ionic-native/crop/ngx';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
-import { Camera } from '@ionic-native/Camera/ngx';
-import { File } from '@ionic-native/file/ngx';
-import { WebView } from '@ionic-native/ionic-webview/ngx';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AboutmodalPageModule } from '../app/aboutmodal/aboutmodal.module';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links/ngx'
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,26 +36,19 @@ import { ReactiveFormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireDatabaseModule,
     HttpModule,
     SharedModule,
-    AboutmodalPageModule,
-    ReactiveFormsModule,
     NgxQRCodeModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    WebView,
-    ImagePicker,
-    Crop,
-    FirebaseService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     UserService,
-    File,
     AuthService,
-    Camera,
-    SocialSharing
+    BarcodeScanner,
+    SocialSharing,
+    FirebaseDynamicLinks
   ],
   bootstrap: [AppComponent]
 })

@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { auth } from 'firebase/app';
 import {UserService} from '../user.service';
+import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links/ngx';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginPage implements OnInit {
 
   isPassword: boolean
 
-  constructor(public afAuth: AngularFireAuth, private router: Router, public user: UserService) { }
+  constructor(public afAuth: AngularFireAuth, private router: Router, public user: UserService,
+    private firebaseDynamicLinks: FirebaseDynamicLinks) { }
 
   ngOnInit() {
     this.isPassword = true;
@@ -67,10 +69,10 @@ export class LoginPage implements OnInit {
     }
   }
 
-  // checkmine(){
-  //   this.firebaseDynamicLinks.onDynamicLink()
-  // .subscribe((res: any) => console.log(res), (error:any) => console.log(error));
+  checkmine(){
+    this.firebaseDynamicLinks.onDynamicLink()
+  .subscribe((res: any) => console.log(res), (error:any) => console.log(error));
 
-  // }
+  }
   
 }

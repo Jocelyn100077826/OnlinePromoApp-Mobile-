@@ -6,6 +6,7 @@ import{Promo, PromotionsService}from '../promotions.service';
 import {firestore} from 'firebase/app'
 import {AlertController} from '@ionic/angular'
 import {Router} from '@angular/router'
+import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links/ngx';
 import { VaultService} from '../vault.service';
 
 @Component({
